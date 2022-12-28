@@ -124,7 +124,7 @@ void openfile(){
         path = path.substr(0,path.find_last_of("/\\") + 1) + "../resultados/" ;
         oss << "sir-a:" << a << "-b:" << b << "-dt:" << dt <<
             "-I:" << estado[0] << "-R:" << estado[1] << "-S:" << estado[2] <<
-            ".txt";
+            "-M:"<< runge << "-C:" << imunidad << ".txt";
         cout << oss.str() << endl;
         myfile.open(path + oss.str(),ios::out|ios::trunc);
         if(!myfile.is_open()){
