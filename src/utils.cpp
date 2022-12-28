@@ -56,6 +56,7 @@ void integracion()
         if(streambuffer)
             progress_bar(raNge1(t,tfin));
     } while (t<tfin);
+    salida();
     if(streambuffer)
         cout << endl;
 }
@@ -72,17 +73,20 @@ void one_step_runge_kutta(float* inp,float* out,float tt,float hh)
 {
     unsigned int i, j;
     float time, incr;
-    for (i=0; i<numeq; i++) out[i]=inp[i];
+    for (i=0; i<numeq; i++)
+        out[i]=inp[i];
     time=tt;
     for (j=0; j<4; j++) {
         derivacion(out,f,time);
-        for (i=0; i<numeq; i++) k[i][j]=f[i];
+        for (i=0; i<numeq; i++)
+            k[i][j]=f[i];
         if(j<2)
             incr=hh/2.0;
         else
             incr=hh;
         time=tt+incr;
-        for (i=0; i<numeq; i++) out[i]=inp[i]+k[i][j]*incr;
+        for (i=0; i<numeq; i++)
+            out[i]=inp[i]+k[i][j]*incr;
     }
     for (i=0; i<numeq; i++)
         out[i]=inp[i]+hh/6.0*(k[i][0]+2*k[i][1]+2*k[i][2]+k[i][3]);
@@ -99,8 +103,8 @@ void one_step_euler(float* inp,float* out,float tt,float hh)
 
 void derivacion(float* est,float* f,float tt){
     // específico para el modelo considerado
-    //con inmunidad
-    if(imunidad)
+    //con inmunidad permanente
+    if(!imunidad)
     {
         f[0]=a*est[0]*est[1]-b*est[0];
         f[1]=-a*est[0]*est[1];
@@ -123,7 +127,7 @@ void openfile(){
         path = get_selfpath();
         path = path.substr(0,path.find_last_of("/\\") + 1) + "../resultados/" ;
         oss << "sir-a:" << a << "-b:" << b << "-dt:" << dt <<
-            "-I:" << estado[0] << "-R:" << estado[1] << "-S:" << estado[2] <<
+            "-I:" << estado[0] << "-S:" << estado[1] << "-R:" << estado[2] <<
             "-M:"<< runge << "-C:" << imunidad << ".txt";
         cout << oss.str() << endl;
         myfile.open(path + oss.str(),ios::out|ios::trunc);

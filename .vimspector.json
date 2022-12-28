@@ -1,0 +1,19 @@
+{
+    "configurations":{
+        "Launch":{
+            "adapter": "vscode-cpptools",
+            "configuration":{
+                "request":"launch",
+                "program": "/home/briansenas/Desktop/Covid-SIR-model-sim/bin/sir-model",
+                "cwd":"/home/briansenas/Desktop/Covid-SIR-model-sim",
+                "externalConsole": true,
+                "console": "externalTerminal",
+                "MIMode":"gdb",
+                "args": [ "0",
+                    "0.001", "0.125", "1", "1","1",
+                    "2", "1", "999" , "0", "1", "0"],
+                "vmArgs":[]
+            }
+        }
+    }
+}

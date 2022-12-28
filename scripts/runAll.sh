@@ -36,32 +36,32 @@ $SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 1 187.5 0 1 1 0.00555
 echo -e "\nApartado 4"
 echo -e "\t a) Implementamos cuarentena:"
 # Implementamos cuarentena, valor de a decrece:
-$SCRIPT_DIR/../bin/sir-model 1 0.0001 0.125 0.1 1 0 50 1 125 0 1 1 0.00555
+$SCRIPT_DIR/../bin/sir-model 1 0.0001 0.125 0.1 1 0 50 1 999 0 1 1 0.00555
 echo -e "\t b) Mejoramos las vacunas/medicinas:"
 # Mejoramos los medicamentos/vacunas, b dobla:
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.25 0.1 1 0 50 1 125 0 1 1 0.00555
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.25 0.1 1 0 50 1 999 0 1 1 0.00555
 echo -e "\t c) La imunidad ahora dura más tiempo: "
 # La imunidad dura más tiempo, aproximadamente el doble:
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 1 125 0 1 1 0.00277
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 1 999 0 1 1 0.00277
 
 # \nApartado 5:
 echo -e "\nApartado 5"
 echo -e "\t a) Número de infectados inciales mayor"
 # Aumetamos el número de individuos infectados a 10.
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 10 125 0 1 1 0.00555
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 10 999 0 1 1 0.00555
 echo -e "\t b) Número de recuperados inciales mayor"
 # Aumetamos el número de individuos recuperados a la mitad.
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 1 125 62.5 1 1 0.00555
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 1 999 500 1 1 0.00555
 
 # \nApartado 6:
 echo -e "\nApartado 6"
 # Euler:
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 1 125 0 0 1 0.00555
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 1 999 0 0 1 0.00555
 # Runge-kutta:
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.05 1 0 50 1 125 0 1 1 0.00555
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.05 1 0 50 1 999 0 1 1 0.00555
 # Euler :
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.05 1 0 50 1 125 0 0 1 0.00555
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.05 1 0 50 1 999 0 0 1 0.00555
 # Runge-kutta:
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.01 1 0 50 1 125 0 1 1 0.00555
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.01 1 0 50 1 999 0 1 1 0.00555
 # Euler :
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.01 1 0 50 1 125 0 0 1 0.00555
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.01 1 0 50 1 999 0 0 1 0.00555

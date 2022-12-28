@@ -49,6 +49,7 @@ int main(int argc, char* argv[]){
     float R = atof(argv[10]);
 
     estado = new float[numeq];
+    oldestado = new float[numeq];
     f = new float[numeq];
     k = new float*[numeq];
     for(unsigned int i=0;i<numeq;i++){
@@ -62,12 +63,13 @@ int main(int argc, char* argv[]){
             cerr << "[ERROR]: Para activar la imunidad, tienes que pasar el parámetro la duración de esta" << endl;
             exit(-1);
         }
-        c = 1/atof(argv[13]);
+        c = 1.0/atof(argv[13]);
     }
 
-    estado[0] = I;
-    estado[1] = S;
-    estado[2] = R;
+    f[0] = f[1] = f[2] = 0;
+    oldestado[0] = estado[0] = I;
+    oldestado[1] = estado[1] = S;
+    oldestado[2] = estado[2] = R;
 
     openfile();
 
@@ -75,7 +77,6 @@ int main(int argc, char* argv[]){
     duracion = start-start;
     t=tinic;
     integracion();
-
     if(streambuffer)
         myfile.close();
 }
