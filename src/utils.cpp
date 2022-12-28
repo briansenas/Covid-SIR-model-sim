@@ -121,11 +121,12 @@ void openfile(){
     stringstream oss;
     if(streambuffer==1){
         path = get_selfpath();
-        path = path.substr(0,path.find_last_of("/\\") + 1);
-        oss << path << "../resultados/sir-a:" << a << "-b:" << b << "-dt:" << dt <<
+        path = path.substr(0,path.find_last_of("/\\") + 1) + "../resultados/" ;
+        oss << "sir-a:" << a << "-b:" << b << "-dt:" << dt <<
             "-I:" << estado[0] << "-R:" << estado[1] << "-S:" << estado[2] <<
             ".txt";
-        myfile.open(oss.str(),ios::out|ios::trunc);
+        cout << oss.str() << endl;
+        myfile.open(path + oss.str(),ios::out|ios::trunc);
         if(!myfile.is_open()){
             cerr << "[ERROR]: Couldn't open file to save results" << endl;
             streambuffer = 0;
