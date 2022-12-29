@@ -10,58 +10,58 @@ SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]:-$0}"; )" &> /dev/null && 
 # Plain base model-testing:
 echo -e "Plain-base-model-testing:"
 # Euler model:
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 1 999 0 0 0
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 10 0 250 1 125 0 0 0
 # Runge model:
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 1 999 0 1 0
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 10 0 250 1 125 0 1 0
 
 # \nApartado 2:
 echo -e "\nApartado 2:"
 echo -e "\ta) Menor que b/a"
 # Menor que b/a = 125, sin posibilidad de recaer:
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 1 62.5 0 1 0
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 10 0 250 1 62.5 0 1 0
 # Menor que b/a = 125, con posibilidad de recaer:
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 1 62.5 0 1 1 180
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 10 0 250 1 62.5 0 1 1 180
 echo -e "\ta) Igual que b/a"
 # Igual que b/a = 125, sin posibilidad de recaer:
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 1 125 0 1 0
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 10 0 250 1 125 0 1 0
 # Igual que b/a = 125, con posibilidad de recaer:
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 1 125 0 1 1 180
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 10 0 250 1 125 0 1 1 180
 echo -e "\ta) Mayor que b/a"
 # Mayor que b/a = 125, sin posibilidad de recaer:
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 1 187.5 0 1 0
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 10 0 250 1 187.5 0 1 0
 # Mayor que b/a = 125, con posibilidad de recaer:
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 1 187.5 0 1 1 180
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 10 0 250 1 187.5 0 1 1 180
 
 # \nApartado 4.
 echo -e "\nApartado 4"
 echo -e "\t a) Implementamos cuarentena:"
 # Implementamos cuarentena, valor de a decrece:
-$SCRIPT_DIR/../bin/sir-model 1 0.0001 0.125 0.1 1 0 50 1 999 0 1 1 180
+$SCRIPT_DIR/../bin/sir-model 1 0.0001 0.125 0.1 10 0 250 1 125 0 1 1 180
 echo -e "\t b) Mejoramos las vacunas/medicinas:"
 # Mejoramos los medicamentos/vacunas, b dobla:
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.25 0.1 1 0 50 1 999 0 1 1 180
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.25 0.1 10 0 250 1 125 0 1 1 180
 echo -e "\t c) La imunidad ahora dura más tiempo: "
 # La imunidad dura más tiempo, aproximadamente el doble:
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 1 999 0 1 1 360
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 10 0 250 1 125 0 1 1 360
 
 # \nApartado 5:
 echo -e "\nApartado 5"
 echo -e "\t a) Número de infectados inciales mayor"
 # Aumetamos el número de individuos infectados a 10.
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 10 999 0 1 1 180
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 10 0 250 10 125 0 1 1 180
 echo -e "\t b) Número de recuperados inciales mayor"
 # Aumetamos el número de individuos recuperados a la mitad.
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 1 999 500 1 1 180
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 10 0 250 1 125 125 1 1 180
 
 # \nApartado 6:
 echo -e "\nApartado 6"
 # Euler:
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 1 0 50 1 999 0 0 1 180
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.1 10 0 250 1 125 0 0 1 180
 # Runge-kutta:
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.05 1 0 50 1 999 0 1 1 180
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.05 10 0 250 1 125 0 1 1 180
 # Euler :
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.05 1 0 50 1 999 0 0 1 180
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.05 10 0 250 1 125 0 0 1 180
 # Runge-kutta:
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.01 1 0 50 1 999 0 1 1 180
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.01 10 0 250 1 125 0 1 1 180
 # Euler :
-$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.01 1 0 50 1 999 0 0 1 180
+$SCRIPT_DIR/../bin/sir-model 1 0.001 0.125 0.01 10 0 250 1 125 0 0 1 180
