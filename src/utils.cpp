@@ -42,16 +42,27 @@ void salida(){
     }
 }
 
+void copiarDe(float* estado, float* oldestado){
+    for(unsigned int i=0;i<numeq;i++){
+        oldestado[i] = estado[i];
+    }
+}
+
 void integracion()
 {
     do {
         auto start = high_resolution_clock::now();
+        // Imprimimos o guardamos valores
         salida();
         ci++;
-        oldestado=estado;
-        one_step(oldestado,estado,t,dt); //sustituir por one-step-runge-kutta o por one-step-euler
+        // Actualizamos estado actual.
+        copiarDe(estado,oldestado);
+        // Integramos con el método adecuado.
+        one_step(oldestado,estado,t,dt);
+        // Incrementamos el tiempo.
         t+=dt;
         auto stop = high_resolution_clock::now();
+        // Acumulamos la duración de la iteración.
         duracion += stop-start;
         if(streambuffer)
             progress_bar(raNge1(t,tfin));
@@ -123,18 +134,16 @@ void openfile(){
     // Try to store the results in a file
     string path;
     stringstream oss;
-    if(streambuffer==1){
-        path = get_selfpath();
-        path = path.substr(0,path.find_last_of("/\\") + 1) + "../resultados/" ;
-        oss << "sir-a:" << a << "-b:" << b << "-dt:" << dt <<
-            "-I:" << estado[0] << "-S:" << estado[1] << "-R:" << estado[2] <<
-            "-M:"<< runge << "-C:" << imunidad << ".txt";
-        cout << oss.str() << endl;
-        myfile.open(path + oss.str(),ios::out|ios::trunc);
-        if(!myfile.is_open()){
-            cerr << "[ERROR]: Couldn't open file to save results" << endl;
-            streambuffer = 0;
-        }
+    path = get_selfpath();
+    path = path.substr(0,path.find_last_of("/\\") + 1) + "../resultados/" ;
+    oss << "sir-a:" << a << "-b:" << b << "-dt:" << dt <<
+        "-I:" << estado[0] << "-S:" << estado[1] << "-R:" << estado[2] <<
+        "-M:"<< runge << "-C:" << imunidad << ".txt";
+    cout << oss.str() << endl;
+    myfile.open(path + oss.str(),ios::out|ios::trunc);
+    if(!myfile.is_open()){
+        cerr << "[ERROR]: Couldn't open file to save results" << endl;
+        streambuffer = 0;
     }
 }
 

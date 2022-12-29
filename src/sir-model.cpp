@@ -34,6 +34,7 @@ int main(int argc, char* argv[]){
         exit(-1);
     }
 
+    // Leemos argumentos de entrada.
     streambuffer = atoi(argv[1]);
     a = atof(argv[2]);
     b = atof(argv[3]);
@@ -48,6 +49,8 @@ int main(int argc, char* argv[]){
     float S = atof(argv[9]);
     float R = atof(argv[10]);
 
+
+    // Reservamos memoria para las variables globales.
     estado = new float[numeq];
     oldestado = new float[numeq];
     f = new float[numeq];
@@ -56,6 +59,7 @@ int main(int argc, char* argv[]){
             k[i] = new float[4];
     }
 
+    // Definimos método de integración y derivadas a utilizar.
     runge = atoi(argv[11]);
     imunidad = atoi(argv[12]);
     if(imunidad){
@@ -66,16 +70,21 @@ int main(int argc, char* argv[]){
         c = 1.0/atof(argv[13]);
     }
 
+    // Valores iniciales para variables globales.
     f[0] = f[1] = f[2] = 0;
-    oldestado[0] = estado[0] = I;
-    oldestado[1] = estado[1] = S;
-    oldestado[2] = estado[2] = R;
+    estado[0] = I;
+    estado[1] = S;
+    estado[2] = R;
 
-    openfile();
+    // Abrimos el archivo si fuera necesario
+    if(streambuffer==1)
+        openfile();
 
+    // Inicializamos temporizador
     auto start = high_resolution_clock::now();
     duracion = start-start;
     t=tinic;
+    // Empezamos a ejecutar el código.
     integracion();
     if(streambuffer)
         myfile.close();
