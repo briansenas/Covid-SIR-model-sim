@@ -41,6 +41,6 @@ f1="sir-a:0.001-b:0.125-dt:0.1-I:10-S:999-R:0-M:1-C:1.txt"
 apt="5-MasInfectados"
 gnuplot -e "filename='$f1';apartado='$apt'" getGraphs.plt
     # b) Número de recuperados inciales mayor
-f1="sir-a:0.001-b:0.125-dt:0.1-I:1-S:2000-R:50000-M:1-C:1.txt"
+f1="sir-a:0.001-b:0.125-dt:0.1-I:1-S:999-R:500-M:1-C:1.txt"
 apt="5-MasRecuperados"
 gnuplot -e "filename='$f1';apartado='$apt'" getGraphs.plt
