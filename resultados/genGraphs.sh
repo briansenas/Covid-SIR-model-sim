@@ -44,3 +44,23 @@ gnuplot -e "filename='$f1';apartado='$apt'" getGraphs.plt
 f1="sir-a:0.001-b:0.125-dt:0.1-I:1-S:125-R:125-M:1-C:1.txt"
 apt="5-MasRecuperados"
 gnuplot -e "filename='$f1';apartado='$apt'" getGraphs.plt
+
+# apartado 6:
+f1="sir-a:0.001-b:0.125-dt:0.05-I:1-S:125-R:0-M:0-C:1.txt"
+apt="6-Euler01"
+gnuplot -e "filename='$f1';apartado='$apt'" getGraphs.plt
+f1="sir-a:0.001-b:0.125-dt:0.05-I:1-S:125-R:0-M:0-C:1.txt"
+apt="6-Euler005"
+gnuplot -e "filename='$f1';apartado='$apt'" getGraphs.plt
+# Euler :
+f1="sir-a:0.001-b:0.125-dt:0.05-I:1-S:125-R:0-M:1-C:1.txt"
+apt="6-Runge005"
+gnuplot -e "filename='$f1';apartado='$apt'" getGraphs.plt
+# Runge-kutta:
+f1="sir-a:0.001-b:0.125-dt:0.01-I:1-S:125-R:0-M:1-C:1.txt"
+apt="6-Runge001"
+gnuplot -e "filename='$f1';apartado='$apt'" getGraphs.plt
+# Euler :
+f1="sir-a:0.001-b:0.125-dt:0.01-I:1-S:125-R:0-M:0-C:1.txt"
+apt="6-Euler001"
+gnuplot -e "filename='$f1';apartado='$apt'" getGraphs.plt

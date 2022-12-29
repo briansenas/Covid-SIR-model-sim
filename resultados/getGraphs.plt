@@ -44,7 +44,19 @@ system "mkdir ".dir
 # https://stackoverflow.com/questions/37674787/gnuplot-get-value-of-a-particular-data-in-a-datafile-with-or-without-using-sta
 getValue(row,col,filename) = system('awk ''{if (NR == '.row.') print $'.col.'}'' '.filename.'')
 
+set key outside
+set key bottom right
+
 # lines = floor(system("wc -l media1-120-0-40.txt"))
+outname = dir."/all.png"
+set output outname
+set xlabel "tiempo"
+set title "Evolución en el tiempo de cada parámetro"
+plot filename u :1 with lp lw 1 title "Infectados", \
+filename u :2 with lp lw 1 title "Susceptibles", \
+filename u :3 with lp lw 1 title "Recuperados"
+
+set key inside
 
 outname = dir."/t-I.png"
 set output outname
@@ -70,8 +82,6 @@ plot filename u :2 with lp lw 1 title "Evolución de susceptibles con el tiempo"
 outname = dir."/I-R.png"
 set output outname
 set xlabel "infectados"
-set xrange [*:*] reverse
-set yrange [*:*] reverse
 set ylabel "recuperados"
 set title "Infectados versus recuperados en el tiempo"
 
@@ -80,8 +90,6 @@ plot filename u 1:3 with lp lw 1 title "Infectados versus recuperados en el tiem
 outname = dir."/I-S.png"
 set output outname
 set xlabel "infectados"
-set xrange [*:*] reverse
-set yrange [*:*] reverse
 set ylabel "susceptibles"
 set title "Infectados versus susceptibles en el tiempo"
 plot filename u 1:2 with lp lw 1 title "Infectados versus susceptibles en el tiempo"
@@ -89,8 +97,6 @@ plot filename u 1:2 with lp lw 1 title "Infectados versus susceptibles en el tie
 outname = dir."/S-R.png"
 set output outname
 set xlabel "susceptibles"
-set xrange [*:*] reverse
-set yrange [*:*] reverse
 set ylabel "recuperados"
 set title "Susceptibles versus recuperados en el tiempo"
 plot filename u 2:3 with lp lw 1 title "Susceptibles versus recuperados en el tiempo"
