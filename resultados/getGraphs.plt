@@ -91,6 +91,7 @@ outname = dir."/I-S.png"
 set output outname
 set xlabel "infectados"
 set ylabel "susceptibles"
+set xrange [*:*] reverse
 set title "Infectados versus susceptibles en el tiempo"
 plot filename u 1:2 with lp lw 1 title "Infectados versus susceptibles en el tiempo"
 

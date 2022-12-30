@@ -9,7 +9,7 @@ using namespace std;
 using namespace std::chrono;
 
 
-float a, b, c, dt;
+float a, b, c, C, dt;
 float tinic, tfin, t;
 unsigned int comm_int, ci=0, numeq = 3;
 ofstream myfile;
@@ -67,7 +67,8 @@ int main(int argc, char* argv[]){
             cerr << "[ERROR]: Para activar la imunidad, tienes que pasar el parámetro la duración de esta" << endl;
             exit(-1);
         }
-        c = 1.0/atof(argv[13]);
+        C = atof(argv[13]);
+        c = 1.0/C;
     }
 
     // Valores iniciales para variables globales.

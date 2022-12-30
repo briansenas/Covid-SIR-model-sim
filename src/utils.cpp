@@ -10,7 +10,7 @@ using namespace std;
 using namespace std::chrono;
 
 
-extern float a, b, c, dt;
+extern float a, b, c, dt, C;
 extern float tinic, tfin, t;
 extern unsigned int comm_int;
 extern unsigned int ci;
@@ -138,7 +138,7 @@ void openfile(){
     path = path.substr(0,path.find_last_of("/\\") + 1) + "../resultados/" ;
     oss << "sir-a:" << a << "-b:" << b << "-dt:" << dt <<
         "-I:" << estado[0] << "-S:" << estado[1] << "-R:" << estado[2] <<
-        "-M:"<< runge << "-C:" << imunidad << ".txt";
+        "-M:"<< runge << "-C:" << imunidad << "-c:" << C << ".txt";
     cout << oss.str() << endl;
     myfile.open(path + oss.str(),ios::out|ios::trunc);
     if(!myfile.is_open()){
